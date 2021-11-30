@@ -16,6 +16,7 @@
     "webpack": "^5.64.4"
   },
   "dependencies": {
+    "crypto": "^1.0.1",
     "express": "^4.17.1"
   }
 }

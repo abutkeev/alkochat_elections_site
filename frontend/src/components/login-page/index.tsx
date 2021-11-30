@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { TLoginButton, TLoginButtonSize } from 'react-telegram-auth';
+import PostAuth from "../../api/auth";
 
 const LoginPage: FC = () => {
     return (
@@ -14,7 +15,7 @@ const LoginPage: FC = () => {
                 buttonSize={TLoginButtonSize.Large}
                 usePic={false}
                 cornerRadius={5}
-                onAuthCallback={user => console.log('auth', user)}
+                onAuthCallback={user => PostAuth(user)}
                 requestAccess='write'
             />
         </div>
