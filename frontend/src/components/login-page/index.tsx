@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { TLoginButton, TLoginButtonSize } from 'react-telegram-auth';
-import PostAuth from '../../api/auth';
+import { PostAuth } from '../../api/auth';
 
 const LoginPage: FC = () => {
     return (

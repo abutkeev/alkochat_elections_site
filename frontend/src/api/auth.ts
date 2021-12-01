@@ -1,3 +1,5 @@
+import callApiMethod from '../utils/callApiMethod';
+
 interface AuthData {
     auth_date: number;
     first_name: string;
@@ -7,14 +9,7 @@ interface AuthData {
     photo_url?: string;
     username?: string;
 }
-const PostAuth = async (authData: Readonly<AuthData>) => {
-    await fetch('/api/auth', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(authData),
-    });
-};
+
+export const PostAuth = async (authData: Readonly<AuthData>) => (await callApiMethod('auth', 'POST', authData)).data;
 
 export default PostAuth;
