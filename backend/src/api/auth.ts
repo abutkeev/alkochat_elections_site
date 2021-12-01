@@ -1,5 +1,6 @@
 import express from "express";
 import { createHash, createHmac } from 'crypto';
+import { registerSession } from "../store/sessions";
 
 export const authRouter = express.Router();
 
@@ -22,6 +23,8 @@ authRouter.post('/', (req, res) => {
             res.status(403).send({error: 'authorization failed'});
             return;
         }
+        registerSession(hash, data);
+        res.cookie('session_hash', hash);
     } catch (e) {
         const error = e instanceof Error ? e.message : 'unknown error';
         res.status(500).send({ error });
