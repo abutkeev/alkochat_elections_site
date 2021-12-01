@@ -12,4 +12,4 @@ interface AuthData {
 
 export const PostAuth = async (authData: Readonly<AuthData>) => (await callApiMethod('auth', 'POST', authData)).data;
 
-export default PostAuth;
+export const GetAuth = async () => (await callApiMethod('auth', 'GET')).data;
