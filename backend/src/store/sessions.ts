@@ -26,3 +26,7 @@ export const registerSession = (hash: string, data: RawSessionInfo) => {
         ...other,
     };
 };
+
+export const getSession = (hash?: string) => {
+    return (hash && sessions[hash]) || undefined;
+};

@@ -1,8 +1,20 @@
 import express from 'express';
+import cookieParser from 'cookie-parser';
 import { createHash, createHmac } from 'crypto';
-import { registerSession } from '../store/sessions';
+import { getSession, registerSession } from '../store/sessions';
 
 export const authRouter = express.Router();
+
+authRouter.use(cookieParser());
+authRouter.get('/', (req, res) => {
+    const data = getSession(req.cookies && req.cookies['session_hash']);
+    console.log(data);
+    if (!data) {
+        res.status(403).send(false);
+        return;
+    }
+    res.status(200).send(data);
+});
 
 authRouter.post('/', (req, res) => {
     const botToken = process.env.BOT_TOKEN;
