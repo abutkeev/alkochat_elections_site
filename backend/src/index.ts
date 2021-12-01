@@ -14,4 +14,4 @@ app.use(express.static(path.resolve('frontend')));
 
 app.listen(PORT, () => {
     console.log(`Server has been started on port ${PORT}...`);
-})
+});
