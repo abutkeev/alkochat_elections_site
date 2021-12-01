@@ -1,15 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
+import { ThemeProvider, StyledEngineProvider } from '@mui/material';
+import theme from './theme';
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
-            <App />
+            <StyledEngineProvider injectFirst>
+                <ThemeProvider theme={theme}>
+                    <App />
+                </ThemeProvider>
+            </StyledEngineProvider>
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')
